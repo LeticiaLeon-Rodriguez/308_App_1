@@ -4,11 +4,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx nodemon backend.js",
+    "start": "node backend.js"
   },
   "author": "",
   "license": "ISC",
-  "description": "", 
+  "description": "",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }
