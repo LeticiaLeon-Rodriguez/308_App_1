@@ -20,7 +20,7 @@ function MyApp() {
   );
 
   function postUser(person) {
-    const promise = fetch("Http://localhost:8000/users", {
+    const promise = fetch("http://localhost:8000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,13 +54,7 @@ function MyApp() {
 
   function updateList(person) { 
     postUser(person)
-      .then((response) => {
-        if (response.status === 201) {
-          return response.json(); 
-        } else {
-          throw new Error(`Failed to add user. Status code: ${response.status}`);
-        }
-      })
+      .then((response) => response.json())
       .then((newUser) => {
         setCharacters([...characters, newUser]); // Add the new user
       })
