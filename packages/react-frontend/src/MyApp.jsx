@@ -33,20 +33,33 @@ function MyApp() {
 
   const [characters, setCharacters] = useState([]);
 
-  function removeOneCharacter(index) {
-    const updated = characters.filter((character, i) => {
-      return i !== index; 
-    }); 
-    setCharacters(updated);
-    console.log('MyApp 1/1');
+  function removeOneCharacter(index, id) {
+    // Make the DELETE request to the backend
+    fetch(`http://localhost:8000/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.status === 204) {
+          setCharacters((prevCharacters) =>
+            prevCharacters.filter((character) => character.id !== id) // Filter out the deleted user by id
+          );
+        } else {
+          console.log("Failed to delete user:", response.status);
+        }
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+
   }
+  
 
   return (
     <div className="container">
       <Table 
 	      characterData={characters} 
-	      removeCharacter={removeOneCharacter}
-      />
+        removeCharacter={(index, id) => removeOneCharacter(index, id)}
+        />
       <Form handleSubmit={updateList} />
     </div>
 

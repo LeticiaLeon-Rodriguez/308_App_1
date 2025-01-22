@@ -2,13 +2,13 @@ import React from "react";
 
 function TableHeader() {
   return (
-    <thread>
+    <thead>
       <tr>
           <th>Name</th>
           <th>Job</th>
           <th>Remove</th>
         </tr>
-      </thread>
+      </thead>
   );
   console.log('Table 1/3');
 
@@ -21,7 +21,7 @@ function TableBody(props) {
         <td>{row.name}</td>
         <td>{row.job}</td>
 	<td>
-	  <button onClick={()=> props.removeCharacter(index)}>
+	  <button onClick={()=> props.removeCharacter(index, row.id)}>
 	    Delete
 	  </button>
 	</td> 
