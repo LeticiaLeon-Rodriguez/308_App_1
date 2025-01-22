@@ -4,20 +4,22 @@ function TableHeader() {
   return (
     <thead>
       <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Job</th>
           <th>Remove</th>
         </tr>
       </thead>
   );
-  console.log('Table 1/3');
 
+  
 }
 
 function TableBody(props) {
   const rows = props.characterData.map((row, index) => {
     return (
-      <tr key={index}>
+      <tr key={row.id}>
+        <td>{row.id}</td>
         <td>{row.name}</td>
         <td>{row.job}</td>
 	<td>
@@ -34,7 +36,7 @@ function TableBody(props) {
         {rows}
        </tbody>
    );
-   console.log('Table 2/3');
+
 
 }
 
@@ -48,7 +50,7 @@ function Table(props) {
 	      />
       </table>
     );
-    console.log('Table 3/3');
+
 
 }
 export default Table;
